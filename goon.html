@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>$GOON - Stay Down, Ape Up</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0a0a0a;
+            color: #fff;
+            font-family: 'Arial Black', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .glitch-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #0a0a0a 25%, #1a0a1a 25%, #1a0a1a 50%, #0a0a0a 50%, #0a0a0a 75%, #1a0a1a 75%);
+            background-size: 40px 40px;
+            opacity: 0.3;
+            z-index: 0;
+            animation: scroll 20s linear infinite;
+        }
+
+        @keyframes scroll {
+            0% { background-position: 0 0; }
+            100% { background-position: 40px 40px; }
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 60px 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 120px;
+            margin-bottom: 20px;
+            animation: pulse 2s ease-in-out infinite;
+            text-shadow: 0 0 20px #ff006e, 0 0 40px #ff006e;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        h1 {
+            font-size: 80px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            background: linear-gradient(90deg, #ff006e, #8338ec, #3a86ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: glow 3s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% { filter: brightness(1); }
+            50% { filter: brightness(1.5); }
+        }
+
+        .tagline {
+            font-size: 24px;
+            color: #888;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .ticker {
+            font-size: 48px;
+            color: #ff006e;
+            margin-bottom: 40px;
+            font-weight: bold;
+            text-shadow: 0 0 10px #ff006e;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #ff006e, #8338ec);
+            color: white;
+            padding: 20px 60px;
+            font-size: 28px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 30px rgba(255, 0, 110, 0.5);
+            text-decoration: none;
+            display: inline-block;
+            margin: 10px;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 50px rgba(255, 0, 110, 0.8);
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 60px 0;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 0, 110, 0.3);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            border-color: #ff006e;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255, 0, 110, 0.3);
+        }
+
+        .stat-value {
+            font-size: 36px;
+            color: #ff006e;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 16px;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .manifesto {
+            background: rgba(255, 255, 255, 0.05);
+            border-left: 4px solid #ff006e;
+            padding: 40px;
+            margin: 60px 0;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+
+        .manifesto h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #ff006e;
+        }
+
+        .manifesto p {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #ccc;
+            margin-bottom: 15px;
+        }
+
+        .roadmap {
+            margin: 60px 0;
+        }
+
+        .roadmap h2 {
+            font-size: 48px;
+            text-align: center;
+            margin-bottom: 40px;
+            color: #ff006e;
+        }
+
+        .roadmap-item {
+            background: rgba(255, 255, 255, 0.05);
+            border-left: 4px solid #8338ec;
+            padding: 30px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+
+        .roadmap-item h3 {
+            font-size: 24px;
+            color: #8338ec;
+            margin-bottom: 10px;
+        }
+
+        .roadmap-item p {
+            color: #ccc;
+            font-size: 16px;
+        }
+
+        .socials {
+            text-align: center;
+            margin: 60px 0;
+        }
+
+        .socials h2 {
+            font-size: 36px;
+            margin-bottom: 30px;
+            color: #ff006e;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .social-link:hover {
+            background: rgba(255, 0, 110, 0.2);
+            border-color: #ff006e;
+            transform: scale(1.05);
+        }
+
+        .warning {
+            text-align: center;
+            padding: 40px 20px;
+            background: rgba(255, 0, 0, 0.1);
+            border: 2px solid rgba(255, 0, 0, 0.3);
+            border-radius: 10px;
+            margin: 60px 0;
+        }
+
+        .warning p {
+            color: #ff4444;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 48px;
+            }
+
+            .logo {
+                font-size: 80px;
+            }
+
+            .ticker {
+                font-size: 32px;
+            }
+
+            .cta-button {
+                padding: 15px 40px;
+                font-size: 20px;
+            }
+
+            .tagline {
+                font-size: 18px;
+            }
+        }
+
+        .glitch {
+            position: relative;
+        }
+
+        .glitch::before,
+        .glitch::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .glitch::before {
+            left: 2px;
+            text-shadow: -2px 0 #ff006e;
+            clip: rect(24px, 550px, 90px, 0);
+            animation: glitch-anim 3s infinite linear alternate-reverse;
+        }
+
+        .glitch::after {
+            left: -2px;
+            text-shadow: -2px 0 #3a86ff;
+            clip: rect(85px, 550px, 140px, 0);
+            animation: glitch-anim 2s infinite linear alternate-reverse;
+        }
+
+        @keyframes glitch-anim {
+            0% {
+                clip: rect(17px, 9999px, 94px, 0);
+            }
+            20% {
+                clip: rect(62px, 9999px, 129px, 0);
+            }
+            40% {
+                clip: rect(34px, 9999px, 73px, 0);
+            }
+            60% {
+                clip: rect(89px, 9999px, 17px, 0);
+            }
+            80% {
+                clip: rect(51px, 9999px, 102px, 0);
+            }
+            100% {
+                clip: rect(73px, 9999px, 45px, 0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="glitch-bg"></div>
+    
+    <div class="container">
+        <div class="hero">
+            <div class="logo">🧠💀</div>
+            <h1 class="glitch" data-text="$GOON">$GOON</h1>
+            <p class="tagline">Stay Down, Ape Up</p>
+            <p class="ticker">The Ultimate Degen Memecoin</p>
+            
+            <div>
+                <a href="#" class="cta-button" onclick="alert('Add your pump.fun link here!')">BUY $GOON</a>
+                <a href="#manifesto" class="cta-button" style="background: linear-gradient(135deg, #8338ec, #3a86ff);">READ MANIFESTO</a>
+            </div>
+        </div>
+
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-value">0%</div>
+                <div class="stat-label">Tax (No Bullshit)</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">100%</div>
+                <div class="stat-label">Community Owned</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">LP</div>
+                <div class="stat-label">Burned Forever</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">∞</div>
+                <div class="stat-label">Goon Sessions</div>
+            </div>
+        </div>
+
+        <div class="manifesto" id="manifesto">
+            <h2>THE GOON MANIFESTO</h2>
+            <p>We are the gooners. The degenerates. The ones who stayed down when everyone else touched grass.</p>
+            <p>While they slept, we gooned. While they worked, we gooned. While they built "real portfolios," we prepared for this moment.</p>
+            <p>$GOON isn't just a memecoin. It's a lifestyle. A commitment. A state of mind.</p>
+            <p>No utility. No roadmap promises we won't keep. No VC dumping. Just pure, unfiltered degen energy.</p>
+            <p>We reject the normie coins. We embrace the chaos. We are inevitable.</p>
+            <p><strong>STAY DOWN. APE UP. NEVER STOP GOONING.</strong></p>
+        </div>
+
+        <div class="roadmap">
+            <h2>THE PATH</h2>
+            <div class="roadmap-item">
+                <h3>Phase 1: THE AWAKENING</h3>
+                <p>Launch on pump.fun. Spread the gospel. Build the cave dweller army.</p>
+            </div>
+            <div class="roadmap-item">
+                <h3>Phase 2: THE GOONING</h3>
+                <p>Viral TikToks. Twitter raids. Discord invasions. Maximum degen deployment.</p>
+            </div>
+            <div class="roadmap-item">
+                <h3>Phase 3: THE ASCENSION</h3>
+                <p>CEX listings. Influencer shoutouts. Elon tweet (manifestation only).</p>
+            </div>
+            <div class="roadmap-item">
+                <h3>Phase 4: THE ETERNAL GOON</h3>
+                <p>??? (We'll figure it out while gooning)</p>
+            </div>
+        </div>
+
+        <div class="socials">
+            <h2>JOIN THE CAVE</h2>
+            <div class="social-links">
+                <a href="#" class="social-link">🐦 Twitter</a>
+                <a href="#" class="social-link">💬 Telegram</a>
+                <a href="#" class="social-link">🎮 Discord</a>
+                <a href="#" class="social-link">📱 TikTok</a>
+            </div>
+        </div>
+
+        <div class="warning">
+            <p><strong>DEGEN WARNING:</strong> This is a memecoin with ZERO inherent value. No promises, no guarantees, no utility. You will probably lose money. Only ape in what you can afford to lose. NFA. DYOR. Don't be an idiot. But also... send it? 💀</p>
+        </div>
+    </div>
+
+    <script>
+        // Add some random glitch effects
+        setInterval(() => {
+            const glitchElements = document.querySelectorAll('.glitch');
+            glitchElements.forEach(el => {
+                if (Math.random() > 0.9) {
+                    el.style.transform = `translate(${Math.random() * 4 - 2}px, ${Math.random() * 4 - 2}px)`;
+                    setTimeout(() => {
+                        el.style.transform = 'translate(0, 0)';
+                    }, 100);
+                }
+            });
+        }, 2000);
+
+        // Konami code easter egg for max degen
+        let konamiCode = [];
+        const konamiSequence = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+        
+        document.addEventListener('keydown', (e) => {
+            konamiCode.push(e.key);
+            konamiCode = konamiCode.slice(-10);
+            
+            if (JSON.stringify(konamiCode) === JSON.stringify(konamiSequence)) {
+                alert('MAXIMUM GOON ACHIEVED 🧠💀🚀');
+                document.body.style.animation = 'pulse 0.5s infinite';
+            }
+        });
+    </script>
+</body>
+</html>
